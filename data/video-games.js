@@ -21,6 +21,6 @@ module.exports = [
     name: 'The last of Us',
     rating: 10,
     adult: true,
-    type: 'Single Player Adventure',
+    type: 'Adventure',
   },
 ];
