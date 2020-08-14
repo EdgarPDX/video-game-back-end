@@ -6,7 +6,7 @@ module.exports = [
     type: 'Open World',
   },
   {
-    name: 'Mari Kart 64',
+    name: 'Mario Kart 64',
     rating: 9,
     adult: false,
     type: 'Racing',
