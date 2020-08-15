@@ -10,6 +10,7 @@ async function run() {
     
     await client.query(`
             DROP TABLE IF EXISTS users CASCADE;
+            DROP TABLE IF EXISTS gametypes CASCADE;
             DROP TABLE IF EXISTS videogames;
         `);
 

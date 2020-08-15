@@ -16,13 +16,17 @@ async function run() {
                     id SERIAL PRIMARY KEY,
                     email VARCHAR(256) NOT NULL,
                     hash VARCHAR(512) NOT NULL
+                );
+                CREATE TABLE gametypes (
+                    id SERIAL PRIMARY KEY,
+                    type VARCHAR(512) NOT NULL
                 );           
                 CREATE TABLE videogames (
                     id SERIAL PRIMARY KEY NOT NULL,
                     name VARCHAR(512) NOT NULL,
                     rating INTEGER NOT NULL,
                     adult BOOLEAN NOT NULL,
-                    type  VARCHAR(512) NOT NULL,
+                    type_id  INTEGER NOT NULL REFERENCES gametypes(id),
                     owner_id INTEGER NOT NULL REFERENCES users(id)
             );
         `);

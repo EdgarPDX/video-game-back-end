@@ -1,6 +1,7 @@
 const client = require('../lib/client');
 // import our seed data:
 const videoGames = require('./video-games.js');
+const typesData = require('./type.js');
 const usersData = require('./users.js');
 const { getEmoji } = require('../lib/emoji.js');
 
@@ -25,12 +26,22 @@ async function run() {
     const user = users[0].rows[0];
 
     await Promise.all(
+      typesData.map(gametype => {
+        return client.query(`
+                    INSERT INTO gametypes (type)
+                    VALUES ($1);
+                `,
+        [gametype.type]);
+      })
+    );
+
+    await Promise.all(
       videoGames.map(game => {
         return client.query(`
-                    INSERT INTO videogames (name, rating, adult, type, owner_id)
+                    INSERT INTO videogames (name, rating, adult, type_id, owner_id)
                     VALUES ($1, $2, $3, $4, $5);
                 `,
-        [game.name, game.rating, game.adult, game.type, user.id]);
+        [game.name, game.rating, game.adult, game.type_id, user.id]);
       })
     );
     
