@@ -18,7 +18,7 @@ async function run() {
                     hash VARCHAR(512) NOT NULL
                 );
                 CREATE TABLE gametypes (
-                    id SERIAL PRIMARY KEY,
+                    id SERIAL PRIMARY KEY NOT NULL,
                     type VARCHAR(512) NOT NULL
                 );           
                 CREATE TABLE videogames (
